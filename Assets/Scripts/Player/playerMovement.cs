@@ -14,45 +14,53 @@ public class PlayerMovement2D : MonoBehaviour
     private Rigidbody2D rb;
     private float moveInput;
 
+    // grounded handling
     private int groundContacts;
+
+    // jump handling
+    private bool jumpRequest;
 
     // rotation
     private bool isRotating;
     private float rotationTimer;
-    private float startZ;
+    private float currentZ;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        startZ = transform.eulerAngles.z;
+
+        // very important for smooth visuals
+        rb.interpolation = RigidbodyInterpolation2D.Interpolate;
+
+        // keep physics stable
+        rb.freezeRotation = true;
+
+        currentZ = rb.rotation;
     }
 
     void Update()
     {
-        moveInput = Input.GetAxis("Horizontal");
+        // INPUT ONLY
+        moveInput = Input.GetAxisRaw("Horizontal");
 
-        // REAL JUMP EVENT
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Jump")) && groundContacts > 0)
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Jump"))
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-
-            // 🔥 ROTATION TRIGGER — works on moving platforms too
-            isRotating = true;
-            rotationTimer = 0f;
+            jumpRequest = true;
         }
 
+        // VISUAL ROTATION (smooth + jitter-free)
         if (isRotating)
         {
             rotationTimer += Time.deltaTime;
             float t = rotationTimer / rotationDuration;
 
-            float z = Mathf.Lerp(startZ, startZ + 180f, t);
-            transform.rotation = Quaternion.Euler(0, 0, z);
+            float z = Mathf.Lerp(currentZ, currentZ + 180f, t);
+            rb.SetRotation(z);
 
             if (t >= 1f)
             {
-                startZ += 180f;
-                transform.rotation = Quaternion.Euler(0, 0, startZ);
+                currentZ += 180f;
+                rb.SetRotation(currentZ);
                 isRotating = false;
             }
         }
@@ -60,7 +68,20 @@ public class PlayerMovement2D : MonoBehaviour
 
     void FixedUpdate()
     {
+        // horizontal movement
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+
+        // jump happens in physics step
+        if (jumpRequest && groundContacts > 0)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+
+            // trigger rotation exactly when jump happens
+            isRotating = true;
+            rotationTimer = 0f;
+        }
+
+        jumpRequest = false;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
