@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMovement2D : MonoBehaviour
 {
@@ -16,55 +16,43 @@ public class PlayerMovement2D : MonoBehaviour
 
     private int groundContacts;
 
-    // rotation variables
+    // rotation
     private bool isRotating;
-    private bool hasRotatedThisJump;
     private float rotationTimer;
-    private float currentZ;
+    private float startZ;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        currentZ = transform.eulerAngles.z;
+        startZ = transform.eulerAngles.z;
     }
 
     void Update()
     {
         moveInput = Input.GetAxis("Horizontal");
 
-        // JUMP
+        // REAL JUMP EVENT
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Jump")) && groundContacts > 0)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
 
-            // start rotation
-            if (!hasRotatedThisJump)
-            {
-                isRotating = true;
-                hasRotatedThisJump = true;
-                rotationTimer = 0f;
-            }
+            // 🔥 ROTATION TRIGGER — works on moving platforms too
+            isRotating = true;
+            rotationTimer = 0f;
         }
 
-        // RESET when grounded
-        if (groundContacts > 0 && Mathf.Abs(rb.linearVelocity.y) < 0.01f)
-        {
-            hasRotatedThisJump = false;
-        }
-
-        // ROTATION LOGIC
         if (isRotating)
         {
             rotationTimer += Time.deltaTime;
             float t = rotationTimer / rotationDuration;
 
-            float z = Mathf.Lerp(currentZ, currentZ + 180f, t);
-            transform.rotation = Quaternion.Euler(0f, 0f, z);
+            float z = Mathf.Lerp(startZ, startZ + 180f, t);
+            transform.rotation = Quaternion.Euler(0, 0, z);
 
             if (t >= 1f)
             {
-                currentZ += 180f;
-                transform.rotation = Quaternion.Euler(0f, 0f, currentZ);
+                startZ += 180f;
+                transform.rotation = Quaternion.Euler(0, 0, startZ);
                 isRotating = false;
             }
         }
