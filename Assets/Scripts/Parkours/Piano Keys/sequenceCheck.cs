@@ -13,6 +13,10 @@ public class MovingPlatformSequence : MonoBehaviour
     [Header("Contact Requirement")]
     [SerializeField] private float requiredContactTime = 0.5f;
 
+    [Header("Sequence Complete")]
+    [SerializeField] private int totalPlatforms = 3;
+    [SerializeField] private GameObject platformLifter;
+
     private static int currentIndex = 1;
     private static int successCount = 0;
 
@@ -21,6 +25,14 @@ public class MovingPlatformSequence : MonoBehaviour
     private float contactTimer;
 
     private static bool isRespawning;
+    private static bool sequenceCompleted;
+
+    void Start()
+    {
+        // make sure lifter starts disabled
+        if (platformLifter != null)
+            platformLifter.SetActive(false);
+    }
 
     void Update()
     {
@@ -71,7 +83,18 @@ public class MovingPlatformSequence : MonoBehaviour
         successCount++;
         currentIndex++;
 
-        Debug.Log("Correct platform after hold: " + platformIndex);
+        Debug.Log("Correct platform: " + platformIndex);
+
+        // ✅ SEQUENCE COMPLETE
+        if (successCount >= totalPlatforms && !sequenceCompleted)
+        {
+            sequenceCompleted = true;
+
+            if (platformLifter != null)
+                platformLifter.SetActive(true);
+
+            Debug.Log("SEQUENCE COMPLETED!");
+        }
     }
 
     IEnumerator MiniRespawn()
@@ -86,9 +109,10 @@ public class MovingPlatformSequence : MonoBehaviour
 
         yield return new WaitForSeconds(respawnDelay);
 
-        // reset sequence
         currentIndex = 1;
         successCount = 0;
+        sequenceCompleted = false;
+
         ResetAllPlatforms();
 
         player.transform.position = miniRespawnPoint.position;
@@ -119,6 +143,7 @@ public class MovingPlatformSequence : MonoBehaviour
     {
         currentIndex = 1;
         successCount = 0;
+        sequenceCompleted = false;
 
         MovingPlatformSequence[] platforms =
             FindObjectsOfType<MovingPlatformSequence>();
@@ -130,5 +155,4 @@ public class MovingPlatformSequence : MonoBehaviour
             p.playerOnPlatform = false;
         }
     }
-
 }
