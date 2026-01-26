@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 public class PushPlatform : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class PushPlatform : MonoBehaviour
     private Vector3 startPos;
     private Vector3 targetPos;
     private bool isPushing;
+
+    public Action OnReachedDestination;
 
     void Start()
     {
@@ -26,9 +29,17 @@ public class PushPlatform : MonoBehaviour
             targetPos,
             pushSpeed * Time.deltaTime
         );
+
+        if (Vector3.Distance(transform.position, targetPos) < 0.01f)
+        {
+            transform.position = targetPos;
+            isPushing = false;
+
+            // 🔥 notify trigger
+            OnReachedDestination?.Invoke();
+        }
     }
 
-    // 🔥 called by trigger
     public void PushIn()
     {
         isPushing = true;

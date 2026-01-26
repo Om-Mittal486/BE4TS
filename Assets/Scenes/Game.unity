@@ -1786,6 +1786,8 @@ MonoBehaviour:
   - {fileID: 40968034}
   - {fileID: 514005144}
   delayBetween: 0.5
+  shakeDuration: 0.3
+  shakeStrength: 0.2
 --- !u!61 &1081909651
 BoxCollider2D:
   m_ObjectHideFlags: 0
