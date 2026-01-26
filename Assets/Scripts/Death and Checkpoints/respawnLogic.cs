@@ -14,6 +14,11 @@ public class HardRespawn : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    public void SetRespawnPoint(Transform newPoint)
+    {
+        respawnPoint = newPoint;
+    }
+
     public void Respawn()
     {
         if (isRespawning) return;
@@ -31,7 +36,7 @@ public class HardRespawn : MonoBehaviour
 
         transform.position = respawnPoint.position;
 
-        // 🔥 RESET PARKOUR COUNTER
+        // reset parkour / puzzles if needed
         MovingPlatformSequence.HardResetSequence();
 
         rb.simulated = true;

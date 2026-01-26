@@ -54,12 +54,12 @@ public class PlayerMovement2D : MonoBehaviour
             rotationTimer += Time.deltaTime;
             float t = rotationTimer / rotationDuration;
 
-            float z = Mathf.Lerp(currentZ, currentZ + 180f, t);
+            float z = Mathf.Lerp(currentZ, currentZ - 180f, t);
             rb.SetRotation(z);
 
             if (t >= 1f)
             {
-                currentZ += 180f;
+                currentZ += -180f;
                 rb.SetRotation(currentZ);
                 isRotating = false;
             }
