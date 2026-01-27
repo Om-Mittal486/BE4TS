@@ -1494,7 +1494,7 @@ MonoBehaviour:
   followSpeed: 4
   verticalMultiplier: 0.5
   minX: 0
-  maxX: 100
+  maxX: 200
   minY: -2
   maxY: 100
 --- !u!1 &552242147
@@ -2118,8 +2118,8 @@ Transform:
   m_GameObject: {fileID: 1314649481}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.8672, y: -6.9593997, z: 0}
-  m_LocalScale: {x: 100.89614, y: 1, z: 1}
+  m_LocalPosition: {x: 46.845, y: -6.9593997, z: 0}
+  m_LocalScale: {x: 148.85207, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397284254}
