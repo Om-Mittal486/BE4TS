@@ -8,31 +8,33 @@ public class PlayerMovement2D : MonoBehaviour
     [Header("Jump")]
     [SerializeField] private float jumpForce = 14f;
 
-    [Header("Jump Rotation")]
-    [SerializeField] private float rotationDuration = 0.3f;
+    [Header("Rotation Durations")]
+    [SerializeField] private float jumpRotationDuration = 0.3f;
+    [SerializeField] private float springRotationDuration = 0.8f;
 
     private Rigidbody2D rb;
     private float moveInput;
 
-    // grounded handling
+    // grounded
     private int groundContacts;
 
-    // jump handling
+    // jump
     private bool jumpRequest;
 
     // rotation
     private bool isRotating;
     private float rotationTimer;
     private float currentZ;
+    private float rotationAmount;
+    private float currentRotationDuration;
+
+    // input lock
+    private bool inputLocked;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        // very important for smooth visuals
         rb.interpolation = RigidbodyInterpolation2D.Interpolate;
-
-        // keep physics stable
         rb.freezeRotation = true;
 
         currentZ = rb.rotation;
@@ -40,26 +42,28 @@ public class PlayerMovement2D : MonoBehaviour
 
     void Update()
     {
-        // INPUT ONLY
-        moveInput = Input.GetAxisRaw("Horizontal");
-
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Jump"))
+        if (!inputLocked)
         {
-            jumpRequest = true;
+            moveInput = Input.GetAxisRaw("Horizontal");
+
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Jump"))
+                jumpRequest = true;
         }
 
-        // VISUAL ROTATION (smooth + jitter-free)
+        // 🔁 ROTATION HANDLER
         if (isRotating)
         {
             rotationTimer += Time.deltaTime;
-            float t = rotationTimer / rotationDuration;
+            float t = rotationTimer / currentRotationDuration;
 
-            float z = Mathf.Lerp(currentZ, currentZ - 180f, t);
+            float targetZ = currentZ - rotationAmount; // clockwise
+            float z = Mathf.Lerp(currentZ, targetZ, t);
+
             rb.SetRotation(z);
 
             if (t >= 1f)
             {
-                currentZ += -180f;
+                currentZ = targetZ;
                 rb.SetRotation(currentZ);
                 isRotating = false;
             }
@@ -68,15 +72,19 @@ public class PlayerMovement2D : MonoBehaviour
 
     void FixedUpdate()
     {
-        // horizontal movement
-        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+        if (!inputLocked)
+        {
+            rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+        }
 
-        // jump happens in physics step
-        if (jumpRequest && groundContacts > 0)
+        // 🟦 normal jump → 180°
+        if (!inputLocked && jumpRequest && groundContacts > 0)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
 
-            // trigger rotation exactly when jump happens
+            rotationAmount = 180f;
+            currentRotationDuration = jumpRotationDuration;
+
             isRotating = true;
             rotationTimer = 0f;
         }
@@ -84,15 +92,33 @@ public class PlayerMovement2D : MonoBehaviour
         jumpRequest = false;
     }
 
+    // 🔥 spring / piston launch → 360°
+    public void Launch(Vector2 force)
+    {
+        inputLocked = true;
+        rb.linearVelocity = force;
+
+        rotationAmount = 360f;
+        currentRotationDuration = springRotationDuration;
+
+        isRotating = true;
+        rotationTimer = 0f;
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
+        {
             groundContacts++;
+            inputLocked = false;
+        }
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
+        {
             groundContacts--;
+        }
     }
 }
