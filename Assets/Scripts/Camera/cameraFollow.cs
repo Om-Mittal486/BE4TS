@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraFollow2D : MonoBehaviour
 {
@@ -7,12 +7,10 @@ public class CameraFollow2D : MonoBehaviour
     [Header("Offset")]
     [SerializeField] private Vector3 offset;
 
-    [Header("Follow")]
-    [SerializeField] private float followSpeed = 5f;
-
-    [Header("Vertical Dampening")]
-    [Range(0f, 1f)]
-    [SerializeField] private float verticalMultiplier = 0.5f;
+    [Header("Follow Speeds")]
+    [SerializeField] private float horizontalSpeed = 8f;
+    [SerializeField] private float verticalUpSpeed = 3f;
+    [SerializeField] private float verticalDownSpeed = 10f;
 
     [Header("Camera Borders")]
     [SerializeField] private float minX;
@@ -20,27 +18,51 @@ public class CameraFollow2D : MonoBehaviour
     [SerializeField] private float minY;
     [SerializeField] private float maxY;
 
+    // shake
+    private float shakeTimer;
+    private float shakeIntensity;
+
     void LateUpdate()
     {
         if (target == null) return;
 
-        Vector3 desiredPosition = new Vector3(
+        Vector3 desired = new Vector3(
             target.position.x + offset.x,
-            target.position.y * verticalMultiplier + offset.y,
+            target.position.y + offset.y,
             offset.z
         );
 
-        // smooth follow
-        Vector3 smoothPosition = Vector3.Lerp(
-            transform.position,
-            desiredPosition,
-            followSpeed * Time.deltaTime
-        );
+        Vector3 current = transform.position;
 
-        // clamp camera inside borders
-        smoothPosition.x = Mathf.Clamp(smoothPosition.x, minX, maxX);
-        smoothPosition.y = Mathf.Clamp(smoothPosition.y, minY, maxY);
+        // horizontal follow
+        current.x = Mathf.Lerp(current.x, desired.x, horizontalSpeed * Time.deltaTime);
 
-        transform.position = smoothPosition;
+        // vertical dampening
+        float verticalSpeed =
+            desired.y > current.y ? verticalUpSpeed : verticalDownSpeed;
+
+        current.y = Mathf.Lerp(current.y, desired.y, verticalSpeed * Time.deltaTime);
+
+        // clamp
+        current.x = Mathf.Clamp(current.x, minX, maxX);
+        current.y = Mathf.Clamp(current.y, minY, maxY);
+
+        transform.position = current;
+
+        // 🔥 CAMERA SHAKE
+        if (shakeTimer > 0f)
+        {
+            shakeTimer -= Time.deltaTime;
+
+            Vector2 shake = Random.insideUnitCircle * shakeIntensity;
+            transform.position += (Vector3)shake;
+        }
+    }
+
+    // called by other scripts
+    public void Shake(float intensity, float duration)
+    {
+        shakeIntensity = intensity;
+        shakeTimer = duration;
     }
 }
