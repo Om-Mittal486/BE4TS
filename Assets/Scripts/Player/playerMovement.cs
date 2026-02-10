@@ -121,4 +121,15 @@ public class PlayerMovement2D : MonoBehaviour
             groundContacts--;
         }
     }
+
+    public void ResetRotationState()
+    {
+        // stop any ongoing rotation
+        isRotating = false;
+        rotationTimer = 0f;
+
+        // reset base rotation
+        currentZ = 0f;
+        rb.SetRotation(0f);
+    }
 }

@@ -7,11 +7,13 @@ public class HardRespawn : MonoBehaviour
     [SerializeField] private float respawnDelay = 0.5f;
 
     private Rigidbody2D rb;
+    private PlayerMovement2D movement;
     private bool isRespawning;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        movement = GetComponent<PlayerMovement2D>();
     }
 
     public void SetRespawnPoint(Transform newPoint)
@@ -29,16 +31,30 @@ public class HardRespawn : MonoBehaviour
     {
         isRespawning = true;
 
+        // stop physics
         rb.linearVelocity = Vector2.zero;
+        rb.angularVelocity = 0f;
         rb.simulated = false;
 
         yield return new WaitForSeconds(respawnDelay);
 
+        // reset position
         transform.position = respawnPoint.position;
 
-        // reset parkour / puzzles if needed
+        // 🔥 RESET ROTATION COMPLETELY
+        rb.rotation = 0f;
+        transform.rotation = Quaternion.identity;
+
+        // 🔥 reset player movement rotation state
+        if (movement != null)
+        {
+            movement.ResetRotationState();
+        }
+
+        // reset parkour / puzzles
         MovingPlatformSequence.HardResetSequence();
 
+        // re-enable physics
         rb.simulated = true;
         isRespawning = false;
     }

@@ -11,6 +11,18 @@ public class SmoothMovingPlatform : MonoBehaviour
     [Header("Pause (only at start)")]
     [SerializeField] private float pauseTime = 0.5f;
 
+    [Header("Activation")]
+    [SerializeField] private bool isActive = true;
+
+    [Header("Camera Shake (Distance Based)")]
+    [SerializeField] private bool enableCameraShake = true;
+    [SerializeField] private float maxShakeIntensity = 0.1f;
+    [SerializeField] private float shakeDuration = 0.3f;
+    [SerializeField] private float maxShakeDistance = 10f;
+
+    [Header("References")]
+    [SerializeField] private Transform player; // assign Player transform
+
     private Vector3 startPos;
 
     private float moveTimer;
@@ -18,6 +30,7 @@ public class SmoothMovingPlatform : MonoBehaviour
 
     private bool goingToTarget = true;
     private bool isPaused;
+    private bool shakeTriggered;
 
     void Start()
     {
@@ -26,6 +39,7 @@ public class SmoothMovingPlatform : MonoBehaviour
 
     void Update()
     {
+        if (!isActive) return;
         if (targetPoint == null) return;
 
         // ⏸ pause ONLY at original position
@@ -37,7 +51,8 @@ public class SmoothMovingPlatform : MonoBehaviour
                 pauseTimer = 0f;
                 isPaused = false;
                 moveTimer = 0f;
-                goingToTarget = true; // always go to target after pause
+                goingToTarget = true;
+                shakeTriggered = false;
             }
             return;
         }
@@ -50,9 +65,11 @@ public class SmoothMovingPlatform : MonoBehaviour
         {
             transform.position = Vector3.Lerp(startPos, targetPoint.position, t);
 
-            // reached target → immediately go back (NO pause)
+            // reached TARGET → camera shake (distance based)
             if (moveTimer >= 1f)
             {
+                TriggerCameraShake();
+
                 moveTimer = 0f;
                 goingToTarget = false;
             }
@@ -61,11 +78,43 @@ public class SmoothMovingPlatform : MonoBehaviour
         {
             transform.position = Vector3.Lerp(targetPoint.position, startPos, t);
 
-            // reached start → PAUSE
+            // reached START → pause
             if (moveTimer >= 1f)
             {
                 isPaused = true;
             }
         }
+    }
+
+    // 🔥 Distance-based camera shake
+    void TriggerCameraShake()
+    {
+        if (!enableCameraShake || shakeTriggered) return;
+        if (player == null) return;
+
+        float distance = Vector2.Distance(player.position, transform.position);
+
+        if (distance >= maxShakeDistance)
+            return; // too far → no shake
+
+        float factor = 1f - (distance / maxShakeDistance);
+        float finalIntensity = maxShakeIntensity * factor;
+
+        if (finalIntensity <= 0.001f) return;
+
+        CameraFollow2D cam = FindObjectOfType<CameraFollow2D>();
+        if (cam != null)
+        {
+            cam.Shake(finalIntensity, shakeDuration);
+        }
+
+        shakeTriggered = true;
+    }
+
+    // 🔁 Called by trigger
+    public void ToggleActive()
+    {
+        isActive = !isActive;
+        Debug.Log("Platform active: " + isActive);
     }
 }

@@ -338,6 +338,12 @@ MonoBehaviour:
   targetPoint: {fileID: 121191461}
   moveTime: 0.75
   pauseTime: 1.5
+  isActive: 1
+  enableCameraShake: 1
+  maxShakeIntensity: 0.15
+  shakeDuration: 0.25
+  maxShakeDistance: 40
+  player: {fileID: 1774894341}
 --- !u!114 &164165468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1989,6 +1995,12 @@ MonoBehaviour:
   targetPoint: {fileID: 2131089382}
   moveTime: 0.75
   pauseTime: 1.5
+  isActive: 1
+  enableCameraShake: 1
+  maxShakeIntensity: 0.15
+  shakeDuration: 0.25
+  maxShakeDistance: 40
+  player: {fileID: 1774894341}
 --- !u!1 &1566960486
 GameObject:
   m_ObjectHideFlags: 0
