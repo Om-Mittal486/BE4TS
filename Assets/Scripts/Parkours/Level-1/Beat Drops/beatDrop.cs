@@ -8,9 +8,18 @@ public class PushPlatform : MonoBehaviour
     [SerializeField] private float pushDistance = 5f;
     [SerializeField] private float pushSpeed = 4f;
 
+    [Header("Audio Settings")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip reachSound;
+    [SerializeField] [Range(0f, 1f)] private float volume = 1f;
+
+    [Tooltip("Time before reaching target to play sound")]
+    [SerializeField] private float playBeforeReachTime = 0.3f;
+
     private Vector3 startPos;
     private Vector3 targetPos;
     private bool isPushing;
+    private bool hasPlayedSound;
 
     public Action OnReachedDestination;
 
@@ -30,12 +39,25 @@ public class PushPlatform : MonoBehaviour
             pushSpeed * Time.deltaTime
         );
 
-        if (Vector3.Distance(transform.position, targetPos) < 0.01f)
+        float remainingDistance = Vector3.Distance(transform.position, targetPos);
+        float remainingTime = remainingDistance / pushSpeed;
+
+        // 🔊 Play sound slightly before reaching
+        if (!hasPlayedSound && remainingTime <= playBeforeReachTime)
+        {
+            if (audioSource != null && reachSound != null)
+            {
+                audioSource.PlayOneShot(reachSound, volume);
+            }
+
+            hasPlayedSound = true;
+        }
+
+        if (remainingDistance < 0.01f)
         {
             transform.position = targetPos;
             isPushing = false;
 
-            // 🔥 notify trigger
             OnReachedDestination?.Invoke();
         }
     }
@@ -43,5 +65,6 @@ public class PushPlatform : MonoBehaviour
     public void PushIn()
     {
         isPushing = true;
+        hasPlayedSound = false; // reset for reuse
     }
 }

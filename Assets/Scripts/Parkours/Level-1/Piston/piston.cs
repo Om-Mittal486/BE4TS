@@ -7,8 +7,8 @@ public class Piston : MonoBehaviour
     [SerializeField] private float extendSpeed = 6f;
 
     [Header("Player Push")]
-    [SerializeField] private float pushDistance = 10f;
-    [SerializeField] private float pushHeight = 8f;
+    [SerializeField] private float pushDistance = 300f;
+    [SerializeField] private float pushHeight = 16f;
 
     private Vector3 startPos;
     private Vector3 targetPos;

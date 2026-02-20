@@ -11,7 +11,6 @@ public class PianoPlatform : MonoBehaviour
     private Vector2 sinkPos;
 
     private Transform player;
-
     private bool counted; // 🔒 only once
 
     void Start()
@@ -41,14 +40,13 @@ public class PianoPlatform : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!collision.gameObject.CompareTag("Player"))
+        if (!other.CompareTag("Player"))
             return;
 
-        player = collision.transform;
+        player = other.transform;
 
-        // ✅ count ONLY first time
         if (!counted)
         {
             counted = true;
@@ -56,11 +54,11 @@ public class PianoPlatform : MonoBehaviour
         }
     }
 
-    void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            player = null;
-        }
+        if (!other.CompareTag("Player"))
+            return;
+
+        player = null;
     }
 }
