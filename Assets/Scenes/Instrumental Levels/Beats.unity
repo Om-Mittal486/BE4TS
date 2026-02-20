@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 9444006}
   - component: {fileID: 9444005}
   m_Layer: 3
-  m_Name: Key_2
+  m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -555,7 +555,7 @@ GameObject:
   - component: {fileID: 57929139}
   - component: {fileID: 57929138}
   m_Layer: 3
-  m_Name: Key_2
+  m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -875,7 +875,7 @@ GameObject:
   - component: {fileID: 72899451}
   - component: {fileID: 72899450}
   m_Layer: 3
-  m_Name: Key_1
+  m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1235,7 +1235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 192038602}
   m_Layer: 3
-  m_Name: Ground 3
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1405,7 +1405,7 @@ GameObject:
   m_Component:
   - component: {fileID: 201649937}
   m_Layer: 0
-  m_Name: Beat_2
+  m_Name: Beat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1488,6 +1488,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 819935701}
+  - {fileID: 1850664686}
+  - {fileID: 2064078747}
   - {fileID: 381447153}
   - {fileID: 524931890}
   - {fileID: 1087006412}
@@ -1526,7 +1529,7 @@ GameObject:
   - component: {fileID: 218096333}
   - component: {fileID: 218096332}
   m_Layer: 3
-  m_Name: Ground 2
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1666,7 +1669,7 @@ GameObject:
   - component: {fileID: 271261229}
   - component: {fileID: 271261228}
   m_Layer: 3
-  m_Name: Key_3
+  m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2026,7 +2029,7 @@ GameObject:
   m_Component:
   - component: {fileID: 303195384}
   m_Layer: 3
-  m_Name: Ground 3
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2062,7 +2065,7 @@ GameObject:
   - component: {fileID: 305693676}
   - component: {fileID: 305693675}
   m_Layer: 3
-  m_Name: Key_2
+  m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2378,7 +2381,7 @@ GameObject:
   m_Component:
   - component: {fileID: 321823021}
   m_Layer: 3
-  m_Name: Ground 3
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2412,7 +2415,7 @@ GameObject:
   - component: {fileID: 330342736}
   - component: {fileID: 330342735}
   m_Layer: 3
-  m_Name: Ground 2
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2870,7 +2873,7 @@ GameObject:
   - component: {fileID: 381447155}
   - component: {fileID: 381447154}
   m_Layer: 3
-  m_Name: Ground 2
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3192,7 +3195,7 @@ GameObject:
   - component: {fileID: 442025023}
   - component: {fileID: 442025022}
   m_Layer: 3
-  m_Name: Key_3
+  m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3370,7 +3373,7 @@ GameObject:
   m_Component:
   - component: {fileID: 494442307}
   m_Layer: 0
-  m_Name: Beat_2 (4)
+  m_Name: Beat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3391,7 +3394,6 @@ Transform:
   m_Children:
   - {fileID: 622195011}
   - {fileID: 1189524952}
-  - {fileID: 819935701}
   m_Father: {fileID: 39294169}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &497191038
@@ -3726,7 +3728,7 @@ GameObject:
   - component: {fileID: 517006569}
   - component: {fileID: 517006568}
   m_Layer: 3
-  m_Name: Ground 2
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3862,7 +3864,7 @@ GameObject:
   m_Component:
   - component: {fileID: 517148188}
   m_Layer: 3
-  m_Name: Ground 3
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3896,7 +3898,7 @@ GameObject:
   - component: {fileID: 524931892}
   - component: {fileID: 524931891}
   m_Layer: 3
-  m_Name: Ground 2
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4036,7 +4038,7 @@ GameObject:
   - component: {fileID: 526239225}
   - component: {fileID: 526239224}
   m_Layer: 3
-  m_Name: Key_2
+  m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4356,7 +4358,7 @@ GameObject:
   - component: {fileID: 549130755}
   - component: {fileID: 549130754}
   m_Layer: 3
-  m_Name: Key_2
+  m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4534,7 +4536,7 @@ GameObject:
   m_Component:
   - component: {fileID: 583566944}
   m_Layer: 0
-  m_Name: Beat_3 (4)
+  m_Name: Beat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4749,7 +4751,7 @@ GameObject:
   m_Component:
   - component: {fileID: 643010256}
   m_Layer: 0
-  m_Name: Beat_2 (6)
+  m_Name: Beat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4786,7 +4788,7 @@ GameObject:
   - component: {fileID: 644051610}
   - component: {fileID: 644051609}
   m_Layer: 3
-  m_Name: Key_2
+  m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5284,7 +5286,7 @@ GameObject:
   m_Component:
   - component: {fileID: 652749770}
   m_Layer: 0
-  m_Name: Beat_2 (11)
+  m_Name: Beat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5319,7 +5321,7 @@ GameObject:
   - component: {fileID: 653944386}
   - component: {fileID: 653944385}
   m_Layer: 3
-  m_Name: Ground 2
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5455,7 +5457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 696291992}
   m_Layer: 0
-  m_Name: Beat_1
+  m_Name: Beat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5488,7 +5490,7 @@ GameObject:
   m_Component:
   - component: {fileID: 741779922}
   m_Layer: 0
-  m_Name: Beat_3 (8)
+  m_Name: Beat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5521,7 +5523,7 @@ GameObject:
   m_Component:
   - component: {fileID: 744115213}
   m_Layer: 0
-  m_Name: Beat_2 (8)
+  m_Name: Beat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5889,7 +5891,7 @@ GameObject:
   - component: {fileID: 819935703}
   - component: {fileID: 819935702}
   m_Layer: 3
-  m_Name: Ground 2
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5904,11 +5906,11 @@ Transform:
   m_GameObject: {fileID: 819935700}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 29.399048, y: 6.4417295, z: 0}
+  m_LocalPosition: {x: 17.69887, y: -3.19741, z: 0}
   m_LocalScale: {x: 1, y: 5.665835, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 494442307}
+  m_Father: {fileID: 211466064}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &819935702
 BoxCollider2D:
@@ -6027,7 +6029,7 @@ GameObject:
   - component: {fileID: 838993921}
   - component: {fileID: 838993920}
   m_Layer: 3
-  m_Name: Ground 2
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6345,7 +6347,7 @@ GameObject:
   m_Component:
   - component: {fileID: 896531978}
   m_Layer: 0
-  m_Name: Beat_3 (5)
+  m_Name: Beat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6366,7 +6368,6 @@ Transform:
   m_Children:
   - {fileID: 1578403867}
   - {fileID: 1610511407}
-  - {fileID: 2064078747}
   m_Father: {fileID: 39294169}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &907249541
@@ -6517,7 +6518,7 @@ GameObject:
   m_Component:
   - component: {fileID: 916696342}
   m_Layer: 0
-  m_Name: Beat_2 (1)
+  m_Name: Beat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6550,7 +6551,7 @@ GameObject:
   m_Component:
   - component: {fileID: 950312208}
   m_Layer: 0
-  m_Name: Beat_2 (10)
+  m_Name: Beat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6617,7 +6618,7 @@ GameObject:
   m_Component:
   - component: {fileID: 963637854}
   m_Layer: 3
-  m_Name: Ground 3
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6653,7 +6654,7 @@ GameObject:
   - component: {fileID: 964122372}
   - component: {fileID: 964122371}
   m_Layer: 3
-  m_Name: Key_3
+  m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7013,7 +7014,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1003739864}
   m_Layer: 0
-  m_Name: Beat_2 (7)
+  m_Name: Beat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7046,7 +7047,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1004658870}
   m_Layer: 0
-  m_Name: Beat_2 (12)
+  m_Name: Beat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7079,7 +7080,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1022068319}
   m_Layer: 0
-  m_Name: Beat_3 (11)
+  m_Name: Beat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7326,7 +7327,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1049170649}
   m_Layer: 0
-  m_Name: Beat_2 (2)
+  m_Name: Beat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7359,7 +7360,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1052232367}
   m_Layer: 3
-  m_Name: Ground 3
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7531,7 +7532,7 @@ GameObject:
   - component: {fileID: 1087006414}
   - component: {fileID: 1087006413}
   m_Layer: 3
-  m_Name: Ground 2
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7667,7 +7668,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1114252496}
   m_Layer: 0
-  m_Name: Beat_3 (3)
+  m_Name: Beat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7688,7 +7689,6 @@ Transform:
   m_Children:
   - {fileID: 1212510977}
   - {fileID: 1361419848}
-  - {fileID: 1850664686}
   m_Father: {fileID: 39294169}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1135708730
@@ -7703,7 +7703,7 @@ GameObject:
   - component: {fileID: 1135708733}
   - component: {fileID: 1135708732}
   m_Layer: 3
-  m_Name: Ground 2
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8025,7 +8025,7 @@ GameObject:
   - component: {fileID: 1167580048}
   - component: {fileID: 1167580047}
   m_Layer: 3
-  m_Name: Key_2
+  m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8385,7 +8385,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1188201758}
   m_Layer: 0
-  m_Name: Beat_2 (3)
+  m_Name: Beat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8422,7 +8422,7 @@ GameObject:
   - component: {fileID: 1189524954}
   - component: {fileID: 1189524953}
   m_Layer: 3
-  m_Name: Key_2
+  m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9011,7 +9011,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1235809329}
   m_Layer: 3
-  m_Name: Ground 3
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9043,7 +9043,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1314305605}
   m_Layer: 0
-  m_Name: Beat_3 (1)
+  m_Name: Beat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9262,7 +9262,7 @@ GameObject:
   - component: {fileID: 1324871637}
   - component: {fileID: 1324871636}
   m_Layer: 3
-  m_Name: Key_2
+  m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9440,7 +9440,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1337881599}
   m_Layer: 0
-  m_Name: Beat_3 (9)
+  m_Name: Beat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9797,7 +9797,7 @@ GameObject:
   - component: {fileID: 1361419850}
   - component: {fileID: 1361419849}
   m_Layer: 3
-  m_Name: Key_3
+  m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9975,7 +9975,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1404978134}
   m_Layer: 3
-  m_Name: Ground 3
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10348,7 +10348,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1498346241}
   m_Layer: 0
-  m_Name: Beat_3 (10)
+  m_Name: Beat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10383,7 +10383,7 @@ GameObject:
   - component: {fileID: 1509593850}
   - component: {fileID: 1509593849}
   m_Layer: 3
-  m_Name: Ground 2
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10521,7 +10521,7 @@ GameObject:
   - component: {fileID: 1553924289}
   - component: {fileID: 1553924288}
   m_Layer: 3
-  m_Name: Ground 2
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10843,7 +10843,7 @@ GameObject:
   - component: {fileID: 1601523636}
   - component: {fileID: 1601523635}
   m_Layer: 3
-  m_Name: Key_2
+  m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11025,7 +11025,7 @@ GameObject:
   - component: {fileID: 1610511409}
   - component: {fileID: 1610511408}
   m_Layer: 3
-  m_Name: Key_3
+  m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11207,7 +11207,7 @@ GameObject:
   - component: {fileID: 1613784072}
   - component: {fileID: 1613784071}
   m_Layer: 3
-  m_Name: Key_3
+  m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11389,7 +11389,7 @@ GameObject:
   - component: {fileID: 1631997949}
   - component: {fileID: 1631997948}
   m_Layer: 3
-  m_Name: Key_3
+  m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11887,7 +11887,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1657576792}
   m_Layer: 0
-  m_Name: Beat_2 (5)
+  m_Name: Beat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12102,7 +12102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1674952399}
   m_Layer: 0
-  m_Name: Beat_3 (12)
+  m_Name: Beat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12135,7 +12135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1677301991}
   m_Layer: 3
-  m_Name: Ground 3
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12353,7 +12353,7 @@ GameObject:
   - component: {fileID: 1726477890}
   - component: {fileID: 1726477889}
   m_Layer: 3
-  m_Name: Key_2
+  m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12531,7 +12531,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1749890248}
   m_Layer: 0
-  m_Name: Beat_3 (6)
+  m_Name: Beat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12568,7 +12568,7 @@ GameObject:
   - component: {fileID: 1752604320}
   - component: {fileID: 1752604319}
   m_Layer: 3
-  m_Name: Key_3
+  m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12931,7 +12931,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1771845914}
   m_Layer: 0
-  m_Name: Beat_3
+  m_Name: Beat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12964,7 +12964,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1771875874}
   m_Layer: 0
-  m_Name: Beat_2 (9)
+  m_Name: Beat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13179,7 +13179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1778159236}
   m_Layer: 3
-  m_Name: Ground 3
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13213,7 +13213,7 @@ GameObject:
   - component: {fileID: 1795751647}
   - component: {fileID: 1795751646}
   m_Layer: 3
-  m_Name: Ground 2
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13353,7 +13353,7 @@ GameObject:
   - component: {fileID: 1814135420}
   - component: {fileID: 1814135419}
   m_Layer: 3
-  m_Name: Key_2
+  m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13535,7 +13535,7 @@ GameObject:
   - component: {fileID: 1836825295}
   - component: {fileID: 1836825294}
   m_Layer: 3
-  m_Name: Key_3
+  m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13851,7 +13851,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1850664686}
   m_Layer: 3
-  m_Name: Ground 3
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13866,12 +13866,12 @@ Transform:
   m_GameObject: {fileID: 1850664685}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.249146, y: 6.4417295, z: 0}
+  m_LocalPosition: {x: 16.828962, y: -3.19741, z: 0}
   m_LocalScale: {x: 3.4464478, y: 5.665835, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1339008043}
-  m_Father: {fileID: 1114252496}
+  m_Father: {fileID: 211466064}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1854066705
 GameObject:
@@ -13887,7 +13887,7 @@ GameObject:
   - component: {fileID: 1854066708}
   - component: {fileID: 1854066707}
   m_Layer: 3
-  m_Name: Key_3
+  m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14527,7 +14527,7 @@ GameObject:
   - component: {fileID: 1913027782}
   - component: {fileID: 1913027781}
   m_Layer: 3
-  m_Name: Key_3
+  m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14705,7 +14705,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1936685820}
   m_Layer: 0
-  m_Name: Beat_3 (2)
+  m_Name: Beat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14742,7 +14742,7 @@ GameObject:
   - component: {fileID: 1955976380}
   - component: {fileID: 1955976379}
   m_Layer: 3
-  m_Name: Key_3
+  m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14924,7 +14924,7 @@ GameObject:
   - component: {fileID: 1976310523}
   - component: {fileID: 1976310522}
   m_Layer: 3
-  m_Name: Key_2
+  m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15102,7 +15102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2011404062}
   m_Layer: 0
-  m_Name: Beat_3 (7)
+  m_Name: Beat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15823,7 +15823,7 @@ GameObject:
   - component: {fileID: 2059845342}
   - component: {fileID: 2059845341}
   m_Layer: 3
-  m_Name: Key_3
+  m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16001,7 +16001,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2064078747}
   m_Layer: 3
-  m_Name: Ground 3
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16016,12 +16016,12 @@ Transform:
   m_GameObject: {fileID: 2064078746}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.249146, y: 6.4417295, z: 0}
+  m_LocalPosition: {x: 24.708967, y: -3.19741, z: 0}
   m_LocalScale: {x: 3.4464478, y: 5.665835, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 66919853}
-  m_Father: {fileID: 896531978}
+  m_Father: {fileID: 211466064}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2078298762
 GameObject:
@@ -16033,7 +16033,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2078298763}
   m_Layer: 3
-  m_Name: Ground 3
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16230,7 +16230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2125270176}
   m_Layer: 0
-  m_Name: Ground 1
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
