@@ -646,7 +646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::pianoSound
   audioSource: {fileID: 109232098}
-  platformSound: {fileID: 0}
+  platformSound: {fileID: 8300000, guid: 0ed18129c4e429347aa40597ef85aba8, type: 3}
 --- !u!1 &80003056
 GameObject:
   m_ObjectHideFlags: 0
@@ -1187,7 +1187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::pianoSound
   audioSource: {fileID: 109232098}
-  platformSound: {fileID: 0}
+  platformSound: {fileID: 8300000, guid: c831d950ba1ad6441b5eb610d3169487, type: 3}
 --- !u!1 &184259339
 GameObject:
   m_ObjectHideFlags: 0
@@ -1888,7 +1888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::pianoSound
   audioSource: {fileID: 109232098}
-  platformSound: {fileID: 0}
+  platformSound: {fileID: 8300000, guid: 1884022139ee5f745a26f6f64a38299c, type: 3}
 --- !u!1 &283409854
 GameObject:
   m_ObjectHideFlags: 0
@@ -3234,7 +3234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::pianoSound
   audioSource: {fileID: 109232098}
-  platformSound: {fileID: 0}
+  platformSound: {fileID: 8300000, guid: 574f7f52e70c48849a3eb14bdf4d69ef, type: 3}
 --- !u!1 &453017114
 GameObject:
   m_ObjectHideFlags: 0
@@ -3677,8 +3677,9 @@ GameObject:
   - component: {fileID: 514005141}
   - component: {fileID: 514005143}
   - component: {fileID: 514005142}
-  - component: {fileID: 514005144}
+  - component: {fileID: 514005146}
   - component: {fileID: 514005145}
+  - component: {fileID: 514005144}
   m_Layer: 3
   m_Name: Large
   m_TagString: Ground
@@ -3834,16 +3835,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 514005140}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba87ad30ef851024c9260749dcb3eb77, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d8c0adeebdbdfd42b3239e1f20ec834, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GrowOnContact
-  requiredContactTime: 0.1
-  maxScale: {x: 50, y: 0.7917849, z: 1}
-  growSpeed: 15
+  m_EditorClassIdentifier: Assembly-CSharp::BarAudioController
+  barGrowth: {fileID: 514005146}
+  player: {fileID: 1774894341}
+  barCollider: {fileID: 514005142}
   audioSource: {fileID: 283409856}
   growSound: {fileID: 8300000, guid: 13dcc979b66a07c4ebefd1ef08ae1003, type: 3}
+  shrinkSound: {fileID: 8300000, guid: ef334df349c94a44f9f422f693fc5328, type: 3}
   maxVolume: 1
-  fadeSpeed: 5
+  fadeSpeed: 10
+  releaseFadeSpeed: 3
+  stopDelay: 0.1
+  maxHearingDistance: 8
+  minHearingDistance: 0.5
+--- !u!114 &514005146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514005140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 764a5b4d9ab23e042b84e542565d08c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BarGrowth
+  requiredContactTime: 0.1
+  maxScale: {x: 53.76, y: 0.7917849, z: 1}
+  growSpeed: 15
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -4643,7 +4664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::pianoSound
   audioSource: {fileID: 109232098}
-  platformSound: {fileID: 0}
+  platformSound: {fileID: 8300000, guid: 71009b9776bfbc44392263790b0b451f, type: 3}
 --- !u!1 &577649493
 GameObject:
   m_ObjectHideFlags: 0
@@ -5118,7 +5139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::pianoSound
   audioSource: {fileID: 109232098}
-  platformSound: {fileID: 0}
+  platformSound: {fileID: 8300000, guid: 88ec6a56b7ed69f41ae76fea7c218ad5, type: 3}
 --- !u!1 &719640512
 GameObject:
   m_ObjectHideFlags: 0
@@ -5739,7 +5760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::pianoSound
   audioSource: {fileID: 109232098}
-  platformSound: {fileID: 0}
+  platformSound: {fileID: 8300000, guid: 0d27bcffd4ea4be4c97606cdffdb1358, type: 3}
 --- !u!1 &1013520579
 GameObject:
   m_ObjectHideFlags: 0
@@ -6282,7 +6303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::pianoSound
   audioSource: {fileID: 109232098}
-  platformSound: {fileID: 0}
+  platformSound: {fileID: 8300000, guid: abe21afa9afe1114fac4ab65311d5caa, type: 3}
 --- !u!1 &1159603965
 GameObject:
   m_ObjectHideFlags: 0
@@ -8045,7 +8066,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::pianoSound
   audioSource: {fileID: 109232098}
-  platformSound: {fileID: 0}
+  platformSound: {fileID: 8300000, guid: 3107efb14f6cf544bb803f93935321f7, type: 3}
 --- !u!1 &1429030464
 GameObject:
   m_ObjectHideFlags: 0
@@ -9390,7 +9411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::pianoSound
   audioSource: {fileID: 109232098}
-  platformSound: {fileID: 0}
+  platformSound: {fileID: 8300000, guid: 262284bad532412418751ac4ce1fb8af, type: 3}
 --- !u!1 &1596836926
 GameObject:
   m_ObjectHideFlags: 0
@@ -9559,7 +9580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::pianoSound
   audioSource: {fileID: 109232098}
-  platformSound: {fileID: 0}
+  platformSound: {fileID: 8300000, guid: b37455d73a51154489ddcc57c577ac34, type: 3}
 --- !u!1 &1610271196
 GameObject:
   m_ObjectHideFlags: 0
@@ -9728,7 +9749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::pianoSound
   audioSource: {fileID: 109232098}
-  platformSound: {fileID: 0}
+  platformSound: {fileID: 8300000, guid: 0ed31ac889181e345a8a91bdb466a126, type: 3}
 --- !u!1 &1622929252
 GameObject:
   m_ObjectHideFlags: 0
@@ -10384,7 +10405,7 @@ Transform:
   m_GameObject: {fileID: 1774894338}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6, y: 0, z: 0}
+  m_LocalPosition: {x: 114.8, y: 0, z: 0}
   m_LocalScale: {x: 0.7, y: 1.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10773,7 +10794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::pianoSound
   audioSource: {fileID: 109232098}
-  platformSound: {fileID: 0}
+  platformSound: {fileID: 8300000, guid: 33687df94df63d346af985494781b068, type: 3}
 --- !u!1 &1865585110
 GameObject:
   m_ObjectHideFlags: 0
@@ -11256,7 +11277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::pianoSound
   audioSource: {fileID: 109232098}
-  platformSound: {fileID: 0}
+  platformSound: {fileID: 8300000, guid: c64b577658c49ed47968945e6190085c, type: 3}
 --- !u!1 &1924928159
 GameObject:
   m_ObjectHideFlags: 0
@@ -11531,8 +11552,8 @@ Transform:
   m_GameObject: {fileID: 2021436452}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 64.1454, y: -5.7803, z: 0}
-  m_LocalScale: {x: 13.947095, y: 9.435768, z: 1}
+  m_LocalPosition: {x: 64.8703, y: -5.7803, z: 0}
+  m_LocalScale: {x: 12.497992, y: 9.435768, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 865753658}
@@ -12084,7 +12105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::pianoSound
   audioSource: {fileID: 109232098}
-  platformSound: {fileID: 0}
+  platformSound: {fileID: 8300000, guid: 218886996517ac048a6f88c4334c6a53, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
