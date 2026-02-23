@@ -4968,7 +4968,7 @@ MonoBehaviour:
   fadeSpeed: 10
   releaseFadeSpeed: 3
   stopDelay: 0.1
-  maxHearingDistance: 8
+  maxHearingDistance: 16
   minHearingDistance: 0.5
 --- !u!114 &514005146
 MonoBehaviour:
