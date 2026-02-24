@@ -3,6 +3,9 @@ using UnityEngine;
 public class XGlobalTrigger : MonoBehaviour
 {
     private Animator[] animators;
+
+    [SerializeField] private GameObject targetObject; // extra feature
+
     private bool hasTriggered = false;
 
     void Start()
@@ -17,6 +20,7 @@ public class XGlobalTrigger : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.JoystickButton2))
         {
+            // Trigger all animations
             foreach (Animator anim in animators)
             {
                 if (anim != null)
@@ -25,7 +29,13 @@ public class XGlobalTrigger : MonoBehaviour
                 }
             }
 
-            hasTriggered = true; // ensures it only happens once
+            // Activate the target object
+            if (targetObject != null)
+            {
+                targetObject.SetActive(true);
+            }
+
+            hasTriggered = true; // one-time only
         }
     }
 }
