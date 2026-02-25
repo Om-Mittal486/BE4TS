@@ -12,10 +12,15 @@ public class MusicNoteSpawner : MonoBehaviour
     public float curveHeight = 0.6f;
     public float curveFrequency = 1f;
 
+    [Header("Control")]
+    public bool allowSpawning = true; // 🔥 ADD THIS
+
     private float timer;
 
     void Update()
     {
+        if (!allowSpawning) return; // 🔥 STOP SPAWNING
+
         timer += Time.deltaTime;
 
         if (timer >= spawnInterval)

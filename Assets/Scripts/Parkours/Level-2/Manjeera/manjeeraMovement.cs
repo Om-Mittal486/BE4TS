@@ -20,8 +20,13 @@ public class SmoothMovingPlatform : MonoBehaviour
     [SerializeField] private float shakeDuration = 0.3f;
     [SerializeField] private float maxShakeDistance = 10f;
 
+    [Header("Audio (Distance Based)")]
+    [SerializeField] private AudioSource hitSound;
+    [SerializeField] private float maxVolume = 1f;
+    [SerializeField] private float maxSoundDistance = 10f;
+
     [Header("References")]
-    [SerializeField] private Transform player; // assign Player transform
+    [SerializeField] private Transform player;
 
     private Vector3 startPos;
 
@@ -42,7 +47,6 @@ public class SmoothMovingPlatform : MonoBehaviour
         if (!isActive) return;
         if (targetPoint == null) return;
 
-        // ⏸ pause ONLY at original position
         if (isPaused)
         {
             pauseTimer += Time.deltaTime;
@@ -57,7 +61,6 @@ public class SmoothMovingPlatform : MonoBehaviour
             return;
         }
 
-        // ▶ movement
         moveTimer += Time.deltaTime / moveTime;
         float t = Mathf.SmoothStep(0f, 1f, moveTimer);
 
@@ -65,10 +68,10 @@ public class SmoothMovingPlatform : MonoBehaviour
         {
             transform.position = Vector3.Lerp(startPos, targetPoint.position, t);
 
-            // reached TARGET → camera shake (distance based)
             if (moveTimer >= 1f)
             {
                 TriggerCameraShake();
+                PlayDistanceBasedSound(); // 🔥 NEW
 
                 moveTimer = 0f;
                 goingToTarget = false;
@@ -78,7 +81,6 @@ public class SmoothMovingPlatform : MonoBehaviour
         {
             transform.position = Vector3.Lerp(targetPoint.position, startPos, t);
 
-            // reached START → pause
             if (moveTimer >= 1f)
             {
                 isPaused = true;
@@ -86,7 +88,7 @@ public class SmoothMovingPlatform : MonoBehaviour
         }
     }
 
-    // 🔥 Distance-based camera shake
+    // 🔥 CAMERA SHAKE
     void TriggerCameraShake()
     {
         if (!enableCameraShake || shakeTriggered) return;
@@ -94,8 +96,7 @@ public class SmoothMovingPlatform : MonoBehaviour
 
         float distance = Vector2.Distance(player.position, transform.position);
 
-        if (distance >= maxShakeDistance)
-            return; // too far → no shake
+        if (distance >= maxShakeDistance) return;
 
         float factor = 1f - (distance / maxShakeDistance);
         float finalIntensity = maxShakeIntensity * factor;
@@ -111,7 +112,25 @@ public class SmoothMovingPlatform : MonoBehaviour
         shakeTriggered = true;
     }
 
-    // 🔁 Called by trigger
+    // 🔊 DISTANCE-BASED SOUND
+    void PlayDistanceBasedSound()
+    {
+        if (hitSound == null || player == null) return;
+
+        float distance = Vector2.Distance(player.position, transform.position);
+
+        if (distance >= maxSoundDistance)
+            return; // too far → no sound
+
+        float factor = 1f - (distance / maxSoundDistance);
+        float finalVolume = maxVolume * factor;
+
+        if (finalVolume <= 0.01f) return;
+
+        hitSound.volume = finalVolume;
+        hitSound.Play();
+    }
+
     public void ToggleActive()
     {
         isActive = !isActive;
