@@ -37,29 +37,54 @@ BE4TS is a 2D instrument-themed platformer where music is not just background au
 | <img src="Screenshots/Screenshot%20(1).png" width="250"/> | <img src="Screenshots/Screenshot%20(2).png" width="250"/> | <img src="Screenshots/Screenshot%20(3).png" width="250"/> | <img src="Screenshots/Screenshot%20(4).png" width="250"/> |
 | <img src="Screenshots/Screenshot%20(5).png" width="250"/> | <img src="Screenshots/Screenshot%20(6).png" width="250"/> | <img src="Screenshots/Screenshot%20(7).png" width="250"/> | <img src="Screenshots/Screenshot%20(8).png" width="250"/> |
 
-## Get Started (Local Setup)
+## Project Structure
+
+    BE4TS/
+    │
+    ├── Assets/                # Core game content
+    │   ├── Scenes/            # Game levels and scenes
+    │   ├── Scripts/           # C# gameplay logic
+    │   ├── Prefabs/           # Reusable game objects
+    │   ├── Sprites/           # 2D art assets
+    │   ├── Audio/             # Music and sound effects
+    │   └── Materials/         # Rendering materials
+    │
+    ├── Packages/              # Unity Package Manager dependencies
+    │   ├── manifest.json
+    │   └── packages-lock.json
+    │
+    ├── ProjectSettings/       # Unity project configuration
+    │
+    ├── .vscode/               # VS Code workspace settings
+    ├── .gitignore             # Git ignore rules
+    ├── R4GE.slnx              # IDE solution file
+    ├── .vsconfig              # Visual Studio configuration
+    └── LICENSE                # MIT License
+
+------------------------------------------------------------------------
+
+## Development Workflow
 
 ### Clone the Repository
 
-```bash
+``` bash
 git clone https://github.com/Om-Mittal486/BE4TS.git
+cd BE4TS
 ```
 
 ### Open in Unity
 
-1. Launch Unity Hub
-2. Click Open Project
-3. Select the cloned project folder
+-   Open Unity Hub
+-   Add the BE4TS project folder
+-   Open using the correct Unity version
+
+Unity will automatically import assets and compile scripts.
 
 ### Build and Run
 
 - Open the project in Unity
 - Press Play in the Unity Editor, or
 - Build the game using Unity’s build system
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for more details.
 
 ## Acknowledgements
 
@@ -71,3 +96,7 @@ This project is licensed under the MIT License. See the LICENSE file for more de
 Developed by:
 - Om Mittal ([Om-Mittal486](https://github.com/Om-Mittal486))
 - Sheshagiri Bharadwaj ([BharadwajSai2005](https://github.com/BharadwajSai2005))
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for more details.
