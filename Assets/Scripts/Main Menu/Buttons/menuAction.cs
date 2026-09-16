@@ -1,62 +1,157 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 using System.Collections;
 
-public class MenuAction : MonoBehaviour
+public class MenuAction : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("Menus")]
     public GameObject mainMenu;
 
+    [Header("Leaderboard Controller")]
+    [SerializeField] private MainMenuLeaderboardController leaderboardController;
+
     private bool canAcceptInput = false;
+
+    private void Awake()
+    {
+        if (leaderboardController == null)
+        {
+            leaderboardController = FindObjectOfType<MainMenuLeaderboardController>();
+        }
+    }
 
     void Start()
     {
-        LockCursor();
+        UnlockCursor();
 
-        if (mainMenu.activeInHierarchy)
+        if (mainMenu != null && mainMenu.activeInHierarchy)
             StartCoroutine(EnableMenuLogicAfterDelay());
+        else
+            canAcceptInput = true;
     }
 
     void OnEnable()
     {
-        // If main menu is re-enabled later
+        UnlockCursor();
+
         if (mainMenu != null && mainMenu.activeInHierarchy)
             StartCoroutine(EnableMenuLogicAfterDelay());
+        else
+            canAcceptInput = true;
     }
 
     IEnumerator EnableMenuLogicAfterDelay()
     {
         canAcceptInput = false;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.2f);
         canAcceptInput = true;
     }
 
-    void OnMenuSubmit()
+    public void OnMenuSubmit()
     {
-        // ❌ Block input if main menu inactive OR delay not finished
-        if (!mainMenu.activeInHierarchy || !canAcceptInput)
-            return;
+        if (!canAcceptInput) return;
 
-        switch (gameObject.name)
+        if (leaderboardController == null)
+            leaderboardController = FindObjectOfType<MainMenuLeaderboardController>();
+
+        string btnName = gameObject.name.Trim();
+
+        switch (btnName)
         {
             case "Play":
-                SceneManager.LoadScene("Mix");
+                if (leaderboardController != null)
+                {
+                    leaderboardController.OpenPlayerNameInput();
+                }
+                else
+                {
+                    SceneManager.LoadScene("Mix");
+                }
+                break;
+
+            case "Continue":
+            case "Confirm":
+                if (leaderboardController != null)
+                {
+                    leaderboardController.ConfirmPlayerNameAndStartGame();
+                }
+                else
+                {
+                    SceneManager.LoadScene("Mix");
+                }
+                break;
+
+            case "LeaderBoard":
+            case "Leaderboard":
+                if (leaderboardController != null)
+                {
+                    leaderboardController.OpenLeaderboard();
+                }
+                break;
+
+            case "Button":
+            case "Back":
+                if (leaderboardController != null)
+                {
+                    // Check whether to close leaderboard or name input
+                    GameObject namePanel = GameObject.Find("PlayerNameInput");
+                    if (namePanel != null && namePanel.activeInHierarchy)
+                    {
+                        leaderboardController.ClosePlayerNameInput();
+                    }
+                    else
+                    {
+                        leaderboardController.CloseLeaderboard();
+                    }
+                }
                 break;
 
             case "Quit":
-                Application.Quit();
+                if (leaderboardController != null)
+                {
+                    leaderboardController.OnQuitClicked();
+                }
+                else
+                {
+                    Application.Quit();
+                }
+                break;
+
+            default:
+                Debug.Log($"[MenuAction] Unhandled button action: '{btnName}'");
                 break;
         }
     }
 
+    // --- Mouse / Pointer Support ---
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        OnMenuSubmit();
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        MenuButton menuBtn = GetComponent<MenuButton>();
+        if (menuBtn != null)
+        {
+            menuBtn.OnPointerHoverEnter();
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        // Optional exit behaviour
+    }
+
     // --- Cursor Control ---
-    void LockCursor()
+    public void LockCursor()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
-    void UnlockCursor()
+    public void UnlockCursor()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
