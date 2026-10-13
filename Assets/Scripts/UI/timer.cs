@@ -10,74 +10,43 @@ public class GameTimer : MonoBehaviour
     [Header("Game Over")]
     [SerializeField] private GameObject timeOverUI;
 
-    private float currentTime;
-    private Coroutine localTimerCoroutine;
-
-    private void OnEnable()
-    {
-        if (GameSessionManager.Instance != null)
-        {
-            GameSessionManager.Instance.OnTimerTick += HandleSessionTimerTick;
-            GameSessionManager.Instance.OnTimeOver += TimeOver;
-            UpdateDisplay(GameSessionManager.Instance.TimeRemaining);
-        }
-    }
-
-    private void OnDisable()
-    {
-        if (GameSessionManager.Instance != null)
-        {
-            GameSessionManager.Instance.OnTimerTick -= HandleSessionTimerTick;
-            GameSessionManager.Instance.OnTimeOver -= TimeOver;
-        }
-    }
+    private int currentTime;
+    private Coroutine timerCoroutine; // ✅ store coroutine
 
     private void Start()
     {
+        StartTimer();
+
         if (timeOverUI != null)
             timeOverUI.SetActive(false);
-
-        // If no global session exists (e.g. running scene directly in editor), fallback to local timer
-        if (GameSessionManager.Instance == null)
-        {
-            StartTimer();
-        }
-        else
-        {
-            UpdateDisplay(GameSessionManager.Instance.TimeRemaining);
-        }
     }
 
-    private void HandleSessionTimerTick(float timeRemaining, float timeElapsed)
-    {
-        UpdateDisplay(timeRemaining);
-    }
-
-    // Local standalone timer fallback
+    // ✅ NEW: Start Timer Method
     public void StartTimer()
     {
         currentTime = startTimeInSeconds;
-        UpdateDisplay(currentTime);
+        UpdateTimerUI();
 
-        if (localTimerCoroutine != null)
-            StopCoroutine(localTimerCoroutine);
+        if (timerCoroutine != null)
+            StopCoroutine(timerCoroutine);
 
-        localTimerCoroutine = StartCoroutine(LocalTimerCoroutine());
+        timerCoroutine = StartCoroutine(TimerCoroutine());
     }
 
-    private IEnumerator LocalTimerCoroutine()
+    private IEnumerator TimerCoroutine()
     {
         while (currentTime > 0)
         {
             yield return new WaitForSecondsRealtime(1f);
+
             currentTime--;
-            UpdateDisplay(currentTime);
+            UpdateTimerUI();
         }
 
         TimeOver();
     }
 
-    public void TimeOver()
+    private void TimeOver()
     {
         if (timeOverUI != null)
             timeOverUI.SetActive(true);
@@ -88,12 +57,12 @@ public class GameTimer : MonoBehaviour
         Cursor.visible = true;
     }
 
-    private void UpdateDisplay(float secondsRemaining)
+    private void UpdateTimerUI()
     {
         if (timerText == null) return;
 
-        int minutes = Mathf.FloorToInt(Mathf.Max(0, secondsRemaining) / 60f);
-        int seconds = Mathf.FloorToInt(Mathf.Max(0, secondsRemaining) % 60f);
+        int minutes = currentTime / 60;
+        int seconds = currentTime % 60;
 
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
